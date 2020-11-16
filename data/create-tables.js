@@ -17,9 +17,8 @@ async function run() {
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
                 );           
-                CREATE TABLE videos (
+                CREATE TABLE favorites (
                     id SERIAL PRIMARY KEY NOT NULL,
-                    playlistId VARCHAR(512) NOT NULL,
                     videoId VARCHAR(512) NOT NULL,
                     title VARCHAR(512) NOT NULL,
                     thumbnails VARCHAR(512) NOT NULL,
