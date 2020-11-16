@@ -1,11 +1,13 @@
   
-function mungedVideos(items) {
-  return {
-    videoId: items.id.videoId,
-    title: items.snippet.title,
-    thumbnails: items.snippet.thumbnails.default.url
+function mungedVideos(video) {
+  return video.items.map(song => {
+    return {
+      videoId: song.items.id.videoId,
+      title: song.items.snippet.title,
+      thumbnails: song.items.snippet.thumbnails.default.url
   
-  }; 
+    }; 
+  });
 }
 
 module.exports = { mungedVideos };
