@@ -1,6 +1,6 @@
 const client = require('../lib/client');
 // import our seed data:
-const videos = require('./videos.js');
+const favorites = require('./favorites.js');
 const usersData = require('./users.js');
 const { getEmoji } = require('../lib/emoji.js');
 
@@ -25,13 +25,13 @@ async function run() {
     const user = users[0].rows[0];
 
     await Promise.all(
-      videos.map(video => {
+      favorites.map(favorite => {
         return client.query(`
-                    INSERT INTO videos (playlistId, videoId, title, thumbnails, owner_id)
-                    VALUES ($1, $2, $3, $4, $5);
+                    INSERT INTO favorites ( videoId, title, thumbnails, owner_id)
+                    VALUES ($1, $2, $3, $4);
                 `,
         // eslint-disable-next-line no-undef
-        [video.playlistId, video.videoId, video.title, video.thumbnails, user.id]);
+        [favorite.videoId, favorite.title, favorite.thumbnails, user.id]);
       })
     );
     
