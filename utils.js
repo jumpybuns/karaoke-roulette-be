@@ -11,7 +11,7 @@ function mungedVideos(video) {
 }
 
 function mungeRandom(random){
-  const videos =  random.randoms.map(song => {
+  const videos =  random.items.map(song => {
     return {
       videoId: song.id.videoId,
       title: song.snippet.title,
@@ -19,7 +19,7 @@ function mungeRandom(random){
     };  
       
   });
-  
+
   return videos[Math.floor(Math.random() * (videos.length - 1))];
     
 }
