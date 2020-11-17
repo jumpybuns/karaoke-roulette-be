@@ -3,7 +3,7 @@ const client = require('../lib/client');
 const favorites = require('./favorites.js');
 const usersData = require('./users.js');
 const { getEmoji } = require('../lib/emoji.js');
-
+const names = require('./name.js');
 run();
 
 async function run() {
@@ -35,6 +35,16 @@ async function run() {
       })
     );
     
+    await Promise.all(
+      names.map(name => {
+        return client.query(`
+                    INSERT INTO names ( name, last_name)
+                    VALUES ($1, $2);
+                `,
+        // eslint-disable-next-line no-undef
+        [name.name, name.last_name]);
+      })
+    );
 
     console.log('seed data load complete', getEmoji(), getEmoji(), getEmoji());
   }
