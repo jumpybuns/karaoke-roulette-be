@@ -3,7 +3,7 @@ const client = require('../lib/client');
 const favorites = require('./favorites.js');
 const usersData = require('./users.js');
 const { getEmoji } = require('../lib/emoji.js');
-const names = require('./name.js');
+const names = require('./names.js');
 run();
 
 async function run() {
