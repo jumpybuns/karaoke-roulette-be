@@ -28,7 +28,7 @@ async function run() {
               id SERIAL PRIMARY KEY,
               name VARCHAR(256) NOT NULL,
               last_name VARCHAR(512) NOT NULL
-        
+             
           );  
         `);
 
