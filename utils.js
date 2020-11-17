@@ -11,17 +11,17 @@ function mungedVideos(video) {
 }
 
 function mungeRandom(random){
-  return random.randoms.map(song => {
+  const videos =  random.randoms.map(song => {
     return {
       videoId: song.id.videoId,
       title: song.snippet.title,
       thumbnails: song.snippet.thumbnails.default.url
     };  
       
-  })
-      
-    .Math.floor(Math.random() * (this.state.videos.length - 1)
-    );
+  });
+  
+  return videos[Math.floor(Math.random() * (videos.length - 1))];
+    
 }
   
 
