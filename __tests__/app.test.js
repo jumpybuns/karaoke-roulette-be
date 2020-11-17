@@ -1,10 +1,11 @@
 require('dotenv').config();
 
 const { execSync } = require('child_process');
-
+const data = require('../data/favorites.js');
 const fakeRequest = require('supertest');
 const app = require('../lib/app');
 const client = require('../lib/client');
+const { mungedVideos } = require('../utils.js');
 
 describe('app routes', () => {
   describe('routes', () => {
@@ -32,34 +33,26 @@ describe('app routes', () => {
     });
 
     test('returns favorites', async() => {
+      const mungedData = mungedVideos(data);
+      expect(mungedData).toEqual( 
+        [
+          {
+            'thumbnails': 'https://i.ytimg.com/vi/1Y77BelxUQY/default.jpg',
+            'title': 'The Champs - Tequila (Karaoke Version)',
+            'videoId': '1Y77BelxUQY',
+          },
+          {
+            'thumbnails': 'https://i.ytimg.com/vi/E0id9kAMS4k/default.jpg',
+            'title': 'Dan + Shay - Tequila (Karaoke Version)',
+            'videoId': 'E0id9kAMS4k',
+          }
+        ]
+      );
 
-      const expectation = [
-        {
-          'id': 1,
-          'name': 'bessie',
-          'coolfactor': 3,
-          'owner_id': 1
-        },
-        {
-          'id': 2,
-          'name': 'jumpy',
-          'coolfactor': 4,
-          'owner_id': 1
-        },
-        {
-          'id': 3,
-          'name': 'spot',
-          'coolfactor': 10,
-          'owner_id': 1
-        }
-      ];
 
-      const data = await fakeRequest(app)
-        .get('/favorites')
-        .expect('Content-Type', /json/)
-        .expect(200);
 
-      expect(data.body).toEqual(expectation);
+
+
     });
   });
 });
