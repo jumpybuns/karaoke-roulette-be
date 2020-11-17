@@ -24,6 +24,12 @@ async function run() {
                     thumbnails VARCHAR(512) NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
             );
+              CREATE TABLE names (
+              id SERIAL PRIMARY KEY,
+              name VARCHAR(256) NOT NULL,
+              last_name VARCHAR(512) NOT NULL
+        
+          );  
         `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());
