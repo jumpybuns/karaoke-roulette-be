@@ -21,7 +21,7 @@ async function run() {
         [user.email, user.hash]);
       })
     );
-      
+
     const user = users[0].rows[0];
 
     await Promise.all(
@@ -33,7 +33,7 @@ async function run() {
         [favorite.id, favorite.videoId, favorite.title, favorite.thumbnails, user.id]);
       })
     );
-    
+
     await Promise.all(
       names.map(name => {
         return client.query(`
@@ -47,11 +47,11 @@ async function run() {
 
     console.log('seed data load complete', getEmoji(), getEmoji(), getEmoji());
   }
-  catch(err) {
+  catch (err) {
     console.log(err);
   }
   finally {
     client.end();
   }
-    
+
 }
