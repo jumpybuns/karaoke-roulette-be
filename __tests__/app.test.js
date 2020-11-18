@@ -49,7 +49,7 @@ describe('app routes', () => {
         ]
       );
     });
-    test('post to faves', async () => {
+    test('post to favorites', async () => {
       const expectation = {
         'thumbnails': 'https://i.ytimg.com/vi/E0id9kAMS4k/default.jpg',
         'title': 'Dan + Shay - Tequila (Karaoke Version)',
