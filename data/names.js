@@ -72,7 +72,7 @@ module.exports = [
     last_name: 'Wildrough',
   },
   {
-    name: 'Sing',
+    name: 'Seen',
     last_name: 'Ger',
   },
   {
@@ -90,5 +90,5 @@ module.exports = [
   {
     name: 'Melvis',
     last_name: 'Dresley',
-  }
+  },
 ];
