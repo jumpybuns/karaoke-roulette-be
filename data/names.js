@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     name: 'Helgi',
-    last_name: 'Biscuit'
+    last_name: 'Biscuit',
   },
   {
     name: 'Sokolf',
@@ -69,6 +69,26 @@ module.exports = [
   },
   {
     name: 'Surt',
-    last_name: 'Wildrough'
+    last_name: 'Wildrough',
   },
+  {
+    name: 'Sing',
+    last_name: 'Ger',
+  },
+  {
+    name: 'Soe',
+    last_name: 'Prano',
+  },
+  {
+    name: 'Crew',
+    last_name: 'Ner',
+  },
+  {
+    name: 'Marry',
+    last_name: 'Banilow',
+  },
+  {
+    name: 'Melvis',
+    last_name: 'Dresley',
+  }
 ];
