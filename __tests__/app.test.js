@@ -50,24 +50,7 @@ describe('app routes', () => {
       );
     });
 
-    test('returns a single favorite', async () => {
-      const expectation = {
-        'id': 2,
-        'thumbnails': 'https://i.ytimg.com/vi/1Y77BelxUQY/default.jpg',
-        'title': 'The Champs - Tequila (Karaoke Version)',
-        'videoid': '1Y77BelxUQY',
-        'owner_id': 2
 
-      };
-
-      const data = await fakeRequest(app)
-        .get('/api/favorites/2')
-        .set('Authorization', token)
-        .expect('Content-Type', /json/)
-        .expect(200);
-
-      expect(data.body).toEqual(expectation);
-    });
 
 
     test('post to favorites', async () => {
@@ -106,16 +89,152 @@ describe('app routes', () => {
 
         .expect(200);
 
+      expect(data.body).toEqual(expectation);
+    });
+    test('returns all names', async () => {
 
-      // const allFavorites = await fakeRequest(app)
-      //   .get('/api/favorites')
-      //.set('Authorization', token)
-      //   .expect('Content-Type', /json/)
-      //   .expect(200);
+      const expectation = [
+        {
+          id: 1,
+          name: 'Bard',
+          last_name: 'Aesir',
+        },
+        {
+          id: 2,
+          name: 'Helgi',
+          last_name: 'Biscuit',
+        },
+        {
+          id: 3,
+          name: 'Sokolf',
+          last_name: 'Blade',
+        },
+        {
+          id: 4,
+          name: 'Dar',
+          last_name: 'Cage',
+        },
+        {
+          id: 5,
+          name: 'Klaengr',
+          last_name: 'Cave',
+        },
+        {
+          id: 6,
+          name: 'Throst',
+          last_name: 'Bone',
+        },
+        {
+          id: 7,
+          name: 'Baror',
+          last_name: 'Bear',
+        },
+        {
+          id: 8,
+          name: 'Thorod',
+          last_name: 'Coffee',
+        },
+        {
+          id: 9,
+          name: 'Sokolf',
+          last_name: 'Cloud',
+        },
+        {
+          id: 10,
+          name: 'Alivi',
+          last_name: 'Code',
+        },
+        {
+          id: 11,
+          name: 'Vika',
+          last_name: 'Elk',
+        },
+        {
+          id: 12,
+          name: 'Ulf',
+          last_name: 'Dwarf',
+        },
+        {
+          id: 13,
+          name: 'Floki',
+          last_name: 'Dragon',
+        },
+        {
+          id: 14,
+          name: 'Waltheof',
+          last_name: 'Dwarf',
+        },
+        {
+          id: 15,
+          name: 'Sokolf',
+          last_name: 'Cheese',
+        },
+        {
+          id: 16,
+          name: 'Geri',
+          last_name: 'Caregiver',
+        },
+        {
+          id: 17,
+          name: 'Waltheof',
+          last_name: 'Stainester',
+        },
+        {
+          id: 18,
+          name: 'Surt',
+          last_name: 'Wildrough',
+        },
+        {
+          id: 19,
+          name: 'Seen',
+          last_name: 'Ger',
+        },
+        {
+          id: 20,
+          name: 'Soe',
+          last_name: 'Prano',
+        },
+        {
+          id: 21,
+          name: 'Crew',
+          last_name: 'Ner',
+        },
+        {
+          id: 22,
+          name: 'Marry',
+          last_name: 'Banilow',
+        },
+        {
+          id: 23,
+          name: 'Melvis',
+          last_name: 'Dresley',
+        },
+      ];
 
+      const data = await fakeRequest(app)
+
+        .get('/random-name')
+        .expect('Content-Type', /json/)
+        .expect(200);
 
       expect(data.body).toEqual(expectation);
-      //expect(allFavorites.body.length).toEqual(1);
     });
+
+    test('returns a single name', async () => {
+      const expectation = [{
+        id: 1,
+        name: 'Bard',
+        last_name: 'Aesir',
+      }];
+
+      const data = await fakeRequest(app)
+        .get('/api/random-name/1')
+        .set('Authorization', token)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
   });
 });
