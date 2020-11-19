@@ -32,7 +32,7 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns favorites', async () => {
+    test('gets favorites', async () => {
       const mungedData = mungedVideos(data);
       expect(mungedData).toEqual(
         [
@@ -68,6 +68,33 @@ describe('app routes', () => {
         .set('Authorization', token);
 
       expect(data.body).toEqual(expectation);
+    });
+
+    test('deletes a resource, returns respond from db', async () => {
+      const expectation = {
+        'thumbnails': 'https://i.ytimg.com/vi/E0id9kAMS4k/default.jpg',
+        'title': 'Dan + Shay - Tequila (Karaoke Version)',
+        'videoid': 'E0id9kAMS4k',
+        'owner_id': 2,
+        'id': 2
+      };
+      const data = await fakeRequest(app)
+        .delete('/api/favorites/2')
+        .set('Authorization', token)
+        .expect('Content-Type', /json/)
+
+        .expect(200);
+
+
+      // const allFavorites = await fakeRequest(app)
+      //   .get('/api/favorites')
+      //.set('Authorization', token)
+      //   .expect('Content-Type', /json/)
+      //   .expect(200);
+
+
+      expect(data.body).toEqual(expectation);
+      //expect(allFavorites.body.length).toEqual(1);
     });
   });
 });
