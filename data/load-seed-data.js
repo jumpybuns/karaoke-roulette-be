@@ -18,7 +18,7 @@ async function run() {
                       VALUES ($1, $2)
                       RETURNING *;
                   `,
-        [user.email, user.hash]);
+          [user.email, user.hash]);
       })
     );
 
@@ -30,24 +30,24 @@ async function run() {
                     INSERT INTO favorites (videoId, title, thumbnails, owner_id)
                     VALUES ($1, $2, $3, $4);
                 `,
-        [favorite.videoId, favorite.title, favorite.thumbnails, user.id]);
+          [favorite.videoId, favorite.title, favorite.thumbnails, user.id]);
       })
     );
 
     await Promise.all(
       names.map(name => {
         return client.query(`
-                    INSERT INTO names ( name, last_name)
+                    INSERT INTO names (name, last_name)
                     VALUES ($1, $2);
                 `,
-        // eslint-disable-next-line no-undef
-        [name.name, name.last_name]);
+          // eslint-disable-next-line no-undef
+          [name.name, name.last_name]);
       })
     );
 
     console.log('seed data load complete', getEmoji(), getEmoji(), getEmoji());
   }
-  catch(err) {
+  catch (err) {
     console.log(err);
   }
   finally {
