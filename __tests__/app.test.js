@@ -49,6 +49,27 @@ describe('app routes', () => {
         ]
       );
     });
+
+    test('returns a single favorite', async () => {
+      const expectation = {
+        'id': 2,
+        'thumbnails': 'https://i.ytimg.com/vi/1Y77BelxUQY/default.jpg',
+        'title': 'The Champs - Tequila (Karaoke Version)',
+        'videoid': '1Y77BelxUQY',
+        'owner_id': 2
+
+      };
+
+      const data = await fakeRequest(app)
+        .get('/api/favorites/2')
+        .set('Authorization', token)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
+
     test('post to favorites', async () => {
       const expectation = {
         'thumbnails': 'https://i.ytimg.com/vi/E0id9kAMS4k/default.jpg',
