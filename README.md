@@ -9,7 +9,7 @@
 1. Run `npm run start:watch` to start the dev server
 1. Routes are in `app.js`, not in `server.js`. This is so our tests will not launch a server every time.
 
-## HARD MODE: Override default queries
+## HARD MODE: yahayhaOverride default queries
 
 ```js
 // OPTIONALLY pass in new queries to override defaults
