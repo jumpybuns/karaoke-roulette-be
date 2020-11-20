@@ -12,6 +12,10 @@ module.exports = [
     last_name: 'Blade',
   },
   {
+    name: 'Starlight',
+    last_name: 'Compost',
+  },
+  {
     name: 'Dar',
     last_name: 'Cage',
   },
